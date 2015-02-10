@@ -11,17 +11,20 @@ window.onload = function() {
     if (App.userId) {
         App.init();
     } else {
-        console.log('You must specify the user in the url as follows: /index.html#username');
+        alert('You must specify the user by using hash in the url: index.html#username');
     }
 };
 
 App.init = function() {
-    var joinButton = document.getElementById('join');
+    var joinButton  = document.getElementById('join'),
+        remoteVideo = document.getElementById('remoteVideo'),
+        localVideo  = document.getElementById('localVideo');
 
     // Create API object instance
     App.dialogic = new Dialogic();
 
-    document.getElementById('remoteVideo').style.display = 'none';
+    joinButton.style.display = 'block';
+    remoteVideo.style.display = 'none';
 
     // Biding join room event
     joinButton.addEventListener('click', function() {
@@ -34,8 +37,8 @@ App.init = function() {
         }
 
         this.style.display = 'none';
-        document.getElementById('localVideo').style.display = 'none';
-        document.getElementById('remoteVideo').style.display = 'block';
+        localVideo.style.display = 'none';
+        remoteVideo.style.display = 'block';
     });
 
     App.registerCurrentUser();

@@ -9,3 +9,7 @@ button {
   height: 2rem;
   margin: 0 auto;
 }
+
+#join {
+  display: none;
+}
